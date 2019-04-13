@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-
+//hei minää muutuin nyt
 struct products
 {
 	char product_name[20];
