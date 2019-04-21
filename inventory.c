@@ -13,113 +13,109 @@ struct products
 	char product_name[10];
 	float price;
 	int barcode;
+	int amount_of_products;
 };
-void print_products(struct product table[]);
-void ask_product(struct products table[]);
+
+void print_products(struct products product[]);
+void ask_product(struct products product[]);
 
 
 int main(void) {
 
 	struct products product[MAX_PRODUCTS] = {0};
+
+		ask_product(product);
+
+		print_products(product);
+}
+
+
+void ask_product(struct products product[])
+{
+	int num = 0;
+	int ok;
 	int exit = 0;
 	char vali[20];
 	int tuotteet = 0;
 	int i = 0;
 
-	while(exit != 1)
-		{
+	while (exit != 1)
+	{
 
-		ask_product(&product, i);
+		printf("give me products number: ");
+		fgets(vali, 20, stdin);
+		ok = sscanf(vali, "%d", &product[num].product_number);
+
+
+
+		while (ok != 1)
+			{
+				printf("Please use numbers and give me a new number\n");
+				fgets(vali, 20, stdin);
+				ok = sscanf(vali, "%d", &product[num].product_number);
+			}
+
+		printf("give Amount of products: ");
+		fgets(vali, 20, stdin);
+		ok = sscanf(vali, "%d", &product[num].amount);
+
+
+
+		while (ok != 1)
+			{
+				printf("Please use numbers and give me a new number\n");
+				fgets(vali, 20, stdin);
+				ok = sscanf(vali, "%d", &product[num].amount);
+			}
+
+		printf("give me products name: ");
+		fgets(product[num].product_name, 10, stdin);
+
+		printf("give me products price: ");
+		fgets(vali, 20, stdin);
+		ok = sscanf(vali, "%f", &product[num].price);
+
+		while (ok != 1)
+			{
+				printf("Please use numbers and give me a new price\n");
+				fgets(vali, 20, stdin);
+				ok = sscanf(vali, "%f", &product[num].price);
+			}
+
+		printf("give me products barcode: ");
+		fgets(vali, 20, stdin );
+		ok = sscanf(vali, "%d", &product[num].barcode);
+
+		while (ok != 1)
+			{
+				printf("Please use numbers and give me a new barcode\n");
+				fgets(vali, 20, stdin);
+				ok = sscanf(vali, "%f", &product[num].barcode);
+			}
 
 		printf("press 1 to exit or press enter to give a next product\n");
-		gets(vali);
-		sscanf_s(vali, "%d", &exit);
+		fgets(vali, 20, stdin);
+		sscanf(vali, "%d", &exit);
 
-		i++;
+		num++;
 		tuotteet++;
+		product->amount_of_products++;
 
 		if (tuotteet == MAX_PRODUCTS)
 			{
 				exit = 1;
 			}
-		}
-
-	for (int i = 0; i < tuotteet; i++)
-			{
-				print_products(&product, i);
-			}
-	
-	
-		gets();
+	}
 }
-
-
-void ask_product(struct products *product, int num)
-{
-	int i = 0;
-	int ok;
-	char vali[20];
-
-
-	printf("give me products number: ");
-	gets(vali);
-	ok = sscanf_s(vali, "%d", &product[num].product_number);
-
-
-
-	while (ok != 1)
-	{
-		printf("Please use numbers and give me a new number\n");
-		gets(vali);
-		ok = sscanf_s(vali, "%d", &product[num].product_number);
-	}
-
-	printf(" give Amount of products: ");
-	gets(vali);
-	ok = sscanf_s(vali, "%d", &product[num].amount);
-
-
-
-	while (ok != 1)
-	{
-		printf("Please use numbers and give me a new amount\n");
-		gets(vali);
-		ok = sscanf_s(vali, "%d", &product[num].amount);
-	}
-
-	printf("give me products name: ");
-	gets(product[num].product_name);
-
-	printf("give me products price: ");
-	gets(vali);
-	ok = sscanf_s(vali, "%f", &product[num].price);
-
-	while (ok != 1)
-	{
-		printf("Please use numbers and give me a new price\n");
-		gets(vali);
-		ok = sscanf_s(vali, "%f", &product[num].price);
-	}
-
-	printf("give me products barcode: ");
-	gets(vali);
-	ok = sscanf_s(vali, "%d", &product[num].barcode);
-
-	while (ok != 1)
-	{
-		printf("Please use numbers and give me a new barcode\n");
-		gets(vali);
-		ok = sscanf_s(vali, "%f", &product[num].barcode);
-	}
-
-}
-	void print_products(struct products *product, int  i) 
+	void print_products(struct products product[]) 
 		{
-			printf("Product number #%d\n   Name of product: %s\n   Price of product: %.3f\n   Barcode of product: %d\n", product[i].product_number, product[i].product_name, product[i].price, product[i].barcode);
+
+		for (int i = 0; i < product->amount_of_products; i++)
+
+			{
+				printf("Product number #%d\n   Amount of product: %d\n   Name of product: %s\n   Price of product: %.3f\n   Barcode of product: %d\n", product[i].product_number, product[i].amount, product[i].product_name, product[i].price, product[i].barcode);
+				printf("\n");
+			}
 		}
 
-
-
-
-	
 
