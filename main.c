@@ -63,15 +63,24 @@ FUNCTIONS *
 /********************************************************************* ; F U N
 C T I O N D E S C R I P T I O N
 ;--------------------------------------------------------------------- ;
-NAME:ask_product() ; DESCRIPTION: kysyy tuotteet ja laittaa ne listalle ;
-Input:struct products product[] ; Output: ; Used global variables: ; REMARKS
+/**
+\fn ask_product() ;
+\brief kysyy tuotteet ja laittaa ne listalle ;
+\param struct products product[] ;
+Output: ;
+Used global variables: ;
+REMARKS
 when using this function:
 ;*********************************************************************/
 
 /********************************************************************* ; F U N
 C T I O N D E S C R I P T I O N
 ;--------------------------------------------------------------------- ;
-NAME:print_products() ; DESCRIPTION: tulostaa tuotelistan ; Input: struct
-products product[] ; Output: ; Used global variables: ; REMARKS when using this
+\fn print_products() ;
+\brief tulostaa tuotelistan ;
+\param struct products product[] ;
+Output: ;
+Used global variables: ;
+REMARKS when using this
 function:
 ;*********************************************************************/
